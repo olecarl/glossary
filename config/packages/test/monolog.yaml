@@ -3,7 +3,7 @@ monolog:
         main:
             type: stream
             path: "%kernel.logs_dir%/%kernel.environment%.log"
-            level: debug
+            level: warning
             channels: [ "!event" ]
 #        main:
 #            type: fingers_crossed
@@ -11,7 +11,7 @@ monolog:
 #            handler: nested
 #            excluded_http_codes: [404, 405]
 #            channels: ["!event"]
-        nested:
-            type: stream
-            path: "%kernel.logs_dir%/%kernel.environment%.log"
-            level: debug
+#        nested:
+#            type: stream
+#            path: "%kernel.logs_dir%/%kernel.environment%.log"
+#            level: debug

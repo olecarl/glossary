@@ -104,7 +104,7 @@
         "codeception/module-phpbrowser": "^2.0",
         "codeception/module-rest": "^2.0",
         "codeception/module-symfony": "^2.1",
-        "symfony/maker-bundle": "^1.36"
+        "symfony/maker-bundle": "^1.36",
         "codeception/module-symfony": "^2.1",
         "symfony/debug-bundle": "5.4.*",
         "symfony/stopwatch": "5.4.*",
