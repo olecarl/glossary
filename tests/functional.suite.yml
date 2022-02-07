@@ -8,6 +8,11 @@
 actor: FunctionalTester
 modules:
     enabled:
-        # add a framework module here
+        - Symfony:
+            app_path: 'src'
+            environment: 'test'
+        - REST:
+            url: https://localhost:8000/
+            depends: Symfony
         - \Helper\Functional
     step_decorators: ~        
