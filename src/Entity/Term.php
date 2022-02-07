@@ -10,7 +10,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\TermRepository;
 
 /**
- * @ApiResource(iri="https://schema.org/DefinedTerm")
+ * @ApiResource()
  * @ORM\Entity(repositoryClass=TermRepository::class)
  */
 class Term
