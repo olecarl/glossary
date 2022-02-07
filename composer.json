@@ -1,6 +1,8 @@
 {
     "type": "project",
-    "license": "proprietary",
+    "name": "olecarl/glossary",
+    "description": "Glossary Web API",
+    "license": "MIT",
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
