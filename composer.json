@@ -23,6 +23,7 @@
         "symfony/expression-language": "5.4.*",
         "symfony/flex": "^1.17|^2",
         "symfony/framework-bundle": "5.4.*",
+        "symfony/monolog-bundle": "^3.7",
         "symfony/property-access": "5.4.*",
         "symfony/property-info": "5.4.*",
         "symfony/proxy-manager-bridge": "5.4.*",
@@ -104,5 +105,9 @@
         "codeception/module-rest": "^2.0",
         "codeception/module-symfony": "^2.1",
         "symfony/maker-bundle": "^1.36"
+        "codeception/module-symfony": "^2.1",
+        "symfony/debug-bundle": "5.4.*",
+        "symfony/stopwatch": "5.4.*",
+        "symfony/web-profiler-bundle": "5.4.*"
     }
 }
