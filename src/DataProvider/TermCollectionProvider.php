@@ -23,17 +23,17 @@ class TermCollectionProvider implements ContextAwareCollectionDataProviderInterf
      * @inheritDoc
      */
     public function getCollection(
-            string $resourceClass,
-            string $operationName = null,
-            array $context = []
+        string $resourceClass,
+        string $operationName = null,
+        array $context = []
     ) {
         return $this->repository->findAll() ?? [];
     }
 
     public function supports(
-            string $resourceClass,
-            string $operationName = null,
-            array $context = []
+        string $resourceClass,
+        string $operationName = null,
+        array $context = []
     ): bool {
         return Term::class === $resourceClass;
     }

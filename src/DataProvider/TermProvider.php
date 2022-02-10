@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\DataProvider;
 
 use ApiPlatform\Core\DataProvider\ItemDataProviderInterface;
@@ -7,7 +9,7 @@ use ApiPlatform\Core\DataProvider\RestrictedDataProviderInterface;
 use App\Entity\Term;
 use App\Repository\TermRepository;
 
-class TermProvider implements ItemDataProviderInterface, RestrictedDataProviderInterface
+final class TermProvider implements ItemDataProviderInterface, RestrictedDataProviderInterface
 {
     protected TermRepository $repository;
 

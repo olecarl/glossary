@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use Symfony\Component\Uid\Ulid;
@@ -37,19 +39,24 @@ class Term
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private string $description;
+    protected string $description;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Url
      */
-    private string $image;
+    protected string $image;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Url
      */
-    private string $url;
+    protected string $url;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=TermSet::class, inversedBy="terms")
+     */
+    private TermSet $termSet;
     //</editor-fold>
 
     //<editor-fold desc="Getter/Setter">
@@ -105,5 +112,18 @@ class Term
 
         return $this;
     }
+
+    public function getTermSet(): ?TermSet
+    {
+        return $this->termSet;
+    }
+
+    public function setTermSet(?TermSet $termSet): self
+    {
+        $this->termSet = $termSet;
+
+        return $this;
+    }
+
     //</editor-fold>
 }
