@@ -36,6 +36,9 @@ class ApiTermCest
 
         list($item) = $I->grabDataFromResponseByJsonPath('$.');
         (!empty($item)) ? $this->item = $item : '';
+
+        $I->assertNotEmpty($item['@id']);
+        $I->assertEquals($params['name'], $item['name']);
     }
 
     public function tryToDeleteTerm(FunctionalTester $I)
