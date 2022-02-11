@@ -44,6 +44,10 @@ class TermSet
         $this->terms = new ArrayCollection();
     }
 
+    public function __toString() {
+        return $this->getId();
+    }
+
     public function getId(): ?string
     {
         return $this->id->toBase32();

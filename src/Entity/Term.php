@@ -60,6 +60,10 @@ class Term
     //</editor-fold>
 
     //<editor-fold desc="Getter/Setter">
+    public function __toString() {
+        return $this->getId();
+    }
+
     public function getId(): ?string
     {
         return $this->id->toBase32();
