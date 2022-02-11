@@ -16,6 +16,9 @@
     "behat/gherkin": {
         "version": "v4.9.0"
     },
+    "behat/transliterator": {
+        "version": "v1.3.0"
+    },
     "codeception/codeception": {
         "version": "4.1",
         "recipe": {
@@ -137,6 +140,9 @@
     },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
+    },
+    "gedmo/doctrine-extensions": {
+        "version": "v3.5.0"
     },
     "guzzlehttp/guzzle": {
         "version": "7.4.1"
