@@ -36,7 +36,7 @@ class ApiEntryCest
     private function provideSupportedFormats() : array
     {
         return [
-                ['mimetype' => 'text/html'],
+                // ['mimetype' => 'text/html'],
                 ['mimetype' => 'application/json'],
                 ['mimetype' => 'application/ld+json'],
                 ['mimetype' => 'application/hal+json'],

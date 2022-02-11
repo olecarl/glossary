@@ -20,4 +20,5 @@ coverage:
         - src/*.php
     exclude:
         - src/Kernel.php
+        - src/DataTransformer/*
         - migrations/*

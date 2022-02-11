@@ -39,8 +39,12 @@ class TermSet
      */
     private Collection $terms;
 
-    public function __construct()
+    /**
+     * @param string $name
+     */
+    public function __construct(string $name)
     {
+        $this->name = $name;
         $this->terms = new ArrayCollection();
     }
 
@@ -56,13 +60,6 @@ class TermSet
     public function getName(): ?string
     {
         return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     /**

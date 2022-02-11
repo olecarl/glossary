@@ -41,6 +41,20 @@ class ApiTermCest
         $I->assertEquals($params['name'], $item['name']);
     }
 
+    public function tryToGetTerms(FunctionalTester $I)
+    {
+        $I->amGoingTo('get terms');
+        $I->sendGet('/api/terms');
+        $I->seeResponseCodeIsSuccessful();
+    }
+
+    public function tryToGetTerm(FunctionalTester $I)
+    {
+        $I->amGoingTo('get term');
+        $I->sendGet($this->item['@id']);
+        $I->seeResponseCodeIsSuccessful();
+    }
+
     public function tryToDeleteTerm(FunctionalTester $I)
     {
         $I->amGoingTo('delete term');

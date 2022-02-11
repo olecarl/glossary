@@ -9,11 +9,14 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\IdGenerator\UlidGenerator;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\TermRepository;
+use App\Dto\DefinedTerm;
 
 /**
- * @ApiResource()
- * @ORM\Entity(repositoryClass=TermRepository::class)
+ * @ApiResource(
+ *     output=DefinedTerm::class,
+ *     attributes={"order"={"name": "ASC"}}
+ * )
+ * @ORM\Entity()
  */
 class Term
 {
@@ -43,15 +46,13 @@ class Term
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Url
      */
-    protected string $image;
+    protected ?string $image;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Url
      */
-    protected string $url;
+    protected ?string $url;
 
     /**
      * @ORM\ManyToOne(targetEntity=TermSet::class, inversedBy="terms")
