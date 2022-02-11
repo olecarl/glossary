@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\DataProvider;
 
 use ApiPlatform\Core\DataProvider\ContextAwareCollectionDataProviderInterface;
@@ -21,17 +23,17 @@ class TermCollectionProvider implements ContextAwareCollectionDataProviderInterf
      * @inheritDoc
      */
     public function getCollection(
-            string $resourceClass,
-            string $operationName = null,
-            array $context = []
+        string $resourceClass,
+        string $operationName = null,
+        array $context = []
     ) {
         return $this->repository->findAll() ?? [];
     }
 
     public function supports(
-            string $resourceClass,
-            string $operationName = null,
-            array $context = []
+        string $resourceClass,
+        string $operationName = null,
+        array $context = []
     ): bool {
         return Term::class === $resourceClass;
     }
