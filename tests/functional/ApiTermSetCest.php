@@ -37,7 +37,7 @@ class ApiTermSetCest
         $I->assertEquals($params['name'], $item['name']);
     }
 
-    public function tryToDeleteTerm(FunctionalTester $I)
+    public function tryToDeleteTermSet(FunctionalTester $I)
     {
         $I->amGoingTo('delete term set');
         $I->sendDELETE($this->item['@id']);

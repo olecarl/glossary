@@ -21,4 +21,5 @@ coverage:
     exclude:
         - src/Kernel.php
         - src/DataTransformer/*
+        - src/DataFixtures/*
         - migrations/*

@@ -55,6 +55,17 @@ class ApiTermCest
         $I->seeResponseCodeIsSuccessful();
     }
 
+    public function tryToPutTerm(FunctionalTester $I)
+    {
+        $params = [
+            'name' => 'dry',
+            'description' => "Don't repeat yourself."
+        ];
+        $I->amGoingTo('update term');
+        $I->sendPut($this->item['@id'], $params);
+        $I->seeResponseCodeIsSuccessful();
+    }
+
     public function tryToDeleteTerm(FunctionalTester $I)
     {
         $I->amGoingTo('delete term');

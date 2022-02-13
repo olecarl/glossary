@@ -105,9 +105,9 @@
         "codeception/module-phpbrowser": "^2.0",
         "codeception/module-rest": "^2.0",
         "codeception/module-symfony": "^2.1",
-        "symfony/maker-bundle": "^1.36",
-        "codeception/module-symfony": "^2.1",
+        "doctrine/doctrine-fixtures-bundle": "^3.4",
         "symfony/debug-bundle": "5.4.*",
+        "symfony/maker-bundle": "^1.36",
         "symfony/stopwatch": "5.4.*",
         "symfony/web-profiler-bundle": "5.4.*"
     }
