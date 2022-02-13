@@ -2,7 +2,7 @@
 
 ---
 
-[![Symfony](https://github.com/olecarl/glossary/actions/workflows/symfony.yml/badge.svg?branch=develop)](https://github.com/olecarl/glossary/actions/workflows/symfony.yml)
+[![Symfony](https://github.com/olecarl/glossary/actions/workflows/symfony.yml/badge.svg?branch=master)](https://github.com/olecarl/glossary/actions/workflows/symfony.yml)
 
 ## Installation
 
