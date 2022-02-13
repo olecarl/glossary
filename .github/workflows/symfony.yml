@@ -42,4 +42,4 @@ jobs:
     - name: Execute tests (Unit and Feature tests) via Codeception
       env:
         DATABASE_URL: sqlite:///%kernel.project_dir%/var/glossary.db
-      run: vendor/bin/codecept run --xml --skip acceptance
+      run: vendor/bin/codecept run functional --xml --html
