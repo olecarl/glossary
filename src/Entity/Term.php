@@ -50,9 +50,9 @@ class Term extends Thing
         return $this->id->toBase32();
     }
 
-    public function getTermSet(): ?string
+    public function getTermSet(): ?TermSet
     {
-        return $this->termSet->getId();
+        return $this->termSet;
     }
 
     public function setTermSet(?TermSet $termSet): self
