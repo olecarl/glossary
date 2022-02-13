@@ -28,7 +28,7 @@ class ApiTermSetCest
     public function tryToPostValidTermSet(FunctionalTester $I)
     {
         $params = [
-            'name' => 'webdev'
+            'name' => 'functional'
         ];
 
         $I->amGoingTo('create term set');
