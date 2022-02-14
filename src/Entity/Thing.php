@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,6 +22,8 @@ class Thing
     /**
      * @ORM\Column(type="string", length=64)
      * @Assert\NotBlank()
+     * @Assert\Length(min="2", max="64")
+     * @ApiFilter(SearchFilter::class, strategy="start")
      */
     protected string $name;
 
