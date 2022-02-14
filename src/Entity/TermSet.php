@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ApiResource()
  * @ORM\Entity()
  */
-class TermSet
+class TermSet extends Thing
 {
     /**
      * @ORM\Id
@@ -28,10 +28,6 @@ class TermSet
      */
     protected Ulid $id;
 
-    /**
-     * @ORM\Column(type="string", length=64)
-     */
-    private string $name;
 
     /**
      * @ORM\OneToMany(targetEntity=Term::class, mappedBy="termSet")
@@ -55,11 +51,6 @@ class TermSet
     public function getId(): ?string
     {
         return $this->id->toBase32();
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
     }
 
     /**

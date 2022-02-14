@@ -8,6 +8,7 @@ use \FunctionalTester;
 class ApiTermCest
 {
 
+
     /** @var array $item */
     private array $item = [];
 
@@ -19,20 +20,38 @@ class ApiTermCest
         $I->haveHttpHeader('accept', 'application/ld+json');
     }
 
+    public function tryToGetTerms(FunctionalTester $I)
+    {
+        $I->amGoingTo('get terms');
+        $I->sendGet('/api/terms');
+
+        $I->expect('response is valid');
+        $I->seeResponseCodeIsSuccessful();
+
+        $I->expect('response is matching json');
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesJsonType(
+                [
+                    '@context' => 'string',
+                    '@id' => 'string',
+                    '@type' => 'string',
+                    'hydra:member' => 'array',
+                ]
+        );
+    }
+
     public function tryToPostValidTerm(FunctionalTester $I)
     {
         $I->amGoingTo('create term set');
-        $I->sendPost('/api/term_sets', ['name' => 'test']);
+        $I->sendPost('/api/term_sets', ['name' => 'test', 'description' => 'Test']);
         $I->seeResponseCodeIsSuccessful();
         $I->seeResponseIsJson();
         list($termset) = $I->grabDataFromResponseByJsonPath('$.');
 
         $params = [
-            'name' => 'dry',
-            'description' => "Don't repeat yourself.",
-            'image' => 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fcampus.datacamp.com%2Fcourses%2Fsoftware-engineering-for-data-scientists-in-python%2Futilizing-classes%3Fex%3D7&psig=AOvVaw066CDbN2gSRwSHCcoLHfgA&ust=1644320535298000&source=images&cd=vfe&ved=0CAgQjRxqFwoTCPCw-LzB7fUCFQAAAAAdAAAAABAL',
-            'url' => 'https://en.wikipedia.org/wiki/Don%27t_repeat_yourself',
-            'termSet' => $termset['@id'],
+                'name' => 'solid',
+                'description' => "Solid.",
+                'termSet' => $termset['@id'],
         ];
 
         $I->amGoingTo('create term');
@@ -48,37 +67,33 @@ class ApiTermCest
         $I->assertEquals($params['name'], $item['name']);
     }
 
-    public function tryToGetTerms(FunctionalTester $I)
-    {
-        $I->amGoingTo('get terms');
-        $I->sendGet('/api/terms');
-        $I->seeResponseCodeIsSuccessful();
-    }
-
-    public function tryToGetTerm(FunctionalTester $I)
-    {
-        $I->amGoingTo('get term');
-        $I->sendGet($this->item['@id']);
-        $I->seeResponseCodeIsSuccessful();
-    }
-
-    public function tryToPutTerm(FunctionalTester $I)
-    {
-        $params = [
-            'name' => 'dry',
-            'description' => "Don't repeat yourself."
-        ];
-        $I->amGoingTo('update term');
-        $I->sendPut($this->item['@id'], $params);
-        $I->seeResponseCodeIsSuccessful();
-    }
-
-    public function tryToDeleteTerm(FunctionalTester $I)
-    {
-        $I->amGoingTo('delete term');
-        $I->sendDELETE($this->item['@id']);
-
-        $I->expect('response code is ' . HttpCode::NO_CONTENT);
-        $I->seeResponseCodeIs(HttpCode::NO_CONTENT);
-    }
+    /**
+     * public function tryToGetTerm(FunctionalTester $I)
+     * {
+     * $I->amGoingTo('get term');
+     * $I->sendGet($this->item['@id']);
+     * $I->seeResponseCodeIsSuccessful();
+     * }
+     *
+     * public function tryToPutTerm(FunctionalTester $I)
+     * {
+     * $params = [
+     * 'name' => 'dry',
+     * 'description' => "Don't repeat yourself."
+     * ];
+     * $I->amGoingTo('update term');
+     * $I->sendPut($this->item['@id'], $params);
+     * $I->seeResponseCodeIsSuccessful();
+     * }
+     *
+     *
+     * public function tryToDeleteTerm(FunctionalTester $I)
+     * {
+     * $I->amGoingTo('delete term');
+     * $I->sendDELETE($this->item['@id']);
+     *
+     * $I->expect('response code is ' . HttpCode::NO_CONTENT);
+     * $I->seeResponseCodeIs(HttpCode::NO_CONTENT);
+     * }
+     **/
 }

@@ -12,6 +12,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $termSet = new TermSet('webdev');
+        $termSet->setDescription('Web Development Glossary');
         $manager->persist($termSet);
         $manager->flush();
 

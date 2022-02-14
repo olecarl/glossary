@@ -1,4 +1,11 @@
 api_platform:
+    title: 'Glossary API'
+    description: 'Manage defined terms sets.'
+    version: '1.0'
+    show_webby: false
+    enable_profiler: true
+    defaults:
+        pagination_enabled: true
     formats:
         jsonld: [ 'application/ld+json' ]
         jsonhal: [ 'application/hal+json' ]
