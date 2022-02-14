@@ -20,9 +20,8 @@ class Thing
 
 
     /**
-     * @ORM\Column(type="string", length=64, unique=true)
+     * @ORM\Column(type="string", length=64, nullable=false)
      * @Assert\NotBlank()
-     * @Assert\Unique()
      * @Assert\Length(min="2", max="64")
      * @ApiFilter(SearchFilter::class, strategy="start")
      */
