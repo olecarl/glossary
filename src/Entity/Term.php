@@ -41,7 +41,8 @@ class Term extends Thing
     //</editor-fold>
 
     //<editor-fold desc="Getter/Setter">
-    public function __toString() {
+    public function __toString()
+    {
         return $this->getId();
     }
 

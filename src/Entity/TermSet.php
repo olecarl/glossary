@@ -44,7 +44,8 @@ class TermSet extends Thing
         $this->terms = new ArrayCollection();
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return $this->getId();
     }
 

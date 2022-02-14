@@ -6,8 +6,6 @@ namespace App\Dto;
 
 class DefinedTerm
 {
-
-
     public string $name;
 
     public string $description;
