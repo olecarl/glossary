@@ -9,8 +9,7 @@ class ApiTermCest
 {
 
 
-    /** @var array $item */
-    private array $item = [];
+    private array $item;
 
     public function _before(FunctionalTester $I)
     {
@@ -38,6 +37,17 @@ class ApiTermCest
                     'hydra:member' => 'array',
                 ]
         );
+
+        list($item) = $I->grabDataFromResponseByJsonPath('$.');
+
+        $this->item = $item['hydra:member'][0];
+    }
+
+    public function tryToGetTerm(FunctionalTester $I)
+    {
+        $I->amGoingTo('get term');
+        $I->sendGet($this->item['@id']);
+        $I->seeResponseCodeIsSuccessful();
     }
 
     public function tryToPostValidTerm(FunctionalTester $I)
@@ -46,12 +56,12 @@ class ApiTermCest
         $I->sendPost('/api/term_sets', ['name' => 'test', 'description' => 'Test']);
         $I->seeResponseCodeIsSuccessful();
         $I->seeResponseIsJson();
-        list($termset) = $I->grabDataFromResponseByJsonPath('$.');
+        list($item) = $I->grabDataFromResponseByJsonPath('$.');
 
         $params = [
                 'name' => 'solid',
                 'description' => "Solid.",
-                'termSet' => $termset['@id'],
+                'termSet' => $item['@id'],
         ];
 
         $I->amGoingTo('create term');
