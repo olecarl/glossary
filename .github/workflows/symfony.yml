@@ -39,6 +39,9 @@ jobs:
     - name: Update database schema
       run: bin/console doctrine:schema:update --force --env test
 
+    - name: Load data fixtures
+      run: bin/console doctrine:fixtures:load --no-interaction --env test
+
     - name: Execute tests (Unit and Feature tests) via Codeception
       env:
         DATABASE_URL: sqlite:///%kernel.project_dir%/var/glossary.db
