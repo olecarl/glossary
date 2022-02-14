@@ -21,39 +21,6 @@ class ApiTermSetCest
     }
 
     /**
-     * Try to create term-set.
-     *
-     * @param FunctionalTester $I
-     */
-    public function tryToPostValidTermSet(FunctionalTester $I)
-    {
-        $params = [
-            'name' => 'functional',
-            'description' => 'Functional Testing'
-        ];
-
-        $I->amGoingTo('create term set');
-        $I->sendPost('/api/term_sets', $params);
-        $I->seeResponseCodeIsSuccessful();
-        $I->seeCurrentRouteIs('api_term_sets_post_collection');
-        $I->seeResponseIsJson();
-
-        list($item) = $I->grabDataFromResponseByJsonPath('$.');
-        (!empty($item)) ? $this->item = $item : '';
-        $I->assertNotEmpty($item['@id']);
-        $I->assertEquals($params['name'], $item['name']);
-    }
-
-    /**
-    public function tryToGetTermSet(FunctionalTester $I)
-    {
-        $I->am('API_USER');
-        $I->amGoingTo('get a term sets');
-        $I->sendGet($this->item['@id']);
-    }
-    **/
-
-    /**
      * Try to get term-set collection.
      *
      * @param FunctionalTester $I
@@ -64,16 +31,56 @@ class ApiTermSetCest
         $I->amGoingTo('get a list of term sets');
         $I->sendGet('/api/term_sets');
         $I->seeResponseCodeIsSuccessful();
+
+        $I->expect('response is matching json');
+        $I->seeResponseIsJson();
+        $I->seeResponseMatchesJsonType(
+                [
+                    '@context' => 'string',
+                    '@id' => 'string',
+                    '@type' => 'string',
+                    'hydra:member' => 'array',
+                ]
+        );
+
+        $I->seeCurrentRouteIs('api_term_sets_get_collection');
     }
 
     /**
-    public function tryToDeleteTermSet(FunctionalTester $I)
+     * Try to create term-set.
+     *
+     * @param FunctionalTester $I
+     */
+    public function tryCrudTermSet(FunctionalTester $I)
     {
+        $params = [
+            'name' => 'functional',
+            'description' => 'Functional Testing'
+        ];
+
+        $I->am('API_USER');
+        $I->amGoingTo('create term set');
+        $I->sendPost('/api/term_sets', $params);
+        $I->seeResponseCodeIsSuccessful();
+        $I->seeResponseIsJson();
+        $I->seeCurrentRouteIs('api_term_sets_post_collection');
+
+        list($item) = $I->grabDataFromResponseByJsonPath('$.');
+
+        $I->assertNotEmpty($item['@id']);
+        $I->assertEquals($params['name'], $item['name']);
+
+        $I->amGoingTo('get a term set');
+        $I->sendGet($item['@id']);
+        $I->seeResponseCodeIsSuccessful();
+        $I->seeResponseIsJson();
+        $I->seeCurrentRouteIs('api_term_sets_get_item');
+
         $I->amGoingTo('delete term set');
-        $I->sendDELETE($this->item['@id']);
+        $I->sendDELETE($item['@id']);
 
         $I->expect('response code is ' . HttpCode::NO_CONTENT);
         $I->seeResponseCodeIs(HttpCode::NO_CONTENT);
+
     }
-     **/
 }
