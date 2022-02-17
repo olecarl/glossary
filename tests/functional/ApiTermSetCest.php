@@ -53,12 +53,18 @@ class ApiTermSetCest
      */
     public function tryCrudTermSet(FunctionalTester $I)
     {
+        $I->am('API_USER');
+        $I->amGoingTo('create term');
+        $I->sendPost('/api/terms', ['name' => 'test', 'description' => 'Test']);
+        $I->seeResponseCodeIsSuccessful();
+        list($term) = $I->grabDataFromResponseByJsonPath('$.');
+
         $params = [
-            'name' => 'functional',
-            'description' => 'Functional Testing'
+                'name' => 'functional',
+                'description' => 'Functional Testing',
+                'terms' => [$term['@id']],
         ];
 
-        $I->am('API_USER');
         $I->amGoingTo('create term set');
         $I->sendPost('/api/term_sets', $params);
         $I->seeResponseCodeIsSuccessful();
