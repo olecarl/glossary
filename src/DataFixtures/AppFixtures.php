@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\DataFixtures;
 
 use App\Entity\Term;
@@ -11,7 +13,8 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $termSet = new TermSet('webdev');
+        $termSet = new TermSet();
+        $termSet->setName('webdev');
         $termSet->setDescription('Web Development Glossary');
         $manager->persist($termSet);
         $manager->flush();
