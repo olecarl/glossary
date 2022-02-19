@@ -71,8 +71,7 @@
             "requirements-checker": "script"
         },
         "check": [
-            "@composer validate",
-            "symfony check:security"
+            "@composer validate"
         ],
         "test": [
             "codecept run"

@@ -35,12 +35,8 @@ class TermSet extends Thing
      */
     private Collection $terms;
 
-    /**
-     * @param string $name
-     */
-    public function __construct(string $name)
+    public function __construct()
     {
-        $this->name = $name;
         $this->terms = new ArrayCollection();
     }
 
